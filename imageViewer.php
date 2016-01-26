@@ -24,7 +24,7 @@
 	<h2>이것은 테스트 입니다.테스트 버전의 테스트</h2>
 
 	<div id="container">
-		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="ÀÌ¹ÌÁö ºä¾î"  id="imagename" class="zooom" style="position:relative"/>
+		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
 	</div>
 <script src="imgPop.js"></script>
 </body>
