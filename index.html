@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="euc-kr">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/uikit/css/uikit.min.css"/>
+	<link rel="stylesheet" href="lib/uikit/css/components/sortable.min.css">
+	<link rel="stylesheet" href="lib/uikit/css/components/sortable.gradient.min.css">
+	<link rel="stylesheet" type="text/css" href="css/injang.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="lib/uikit/js/uikit.min.js"></script>
+	<script src="lib/uikit/js/components/sortable.min.js"></script>
+	
+
+	<title>인장 이미지 생성기 버전 0.5</title>
+	</head>
+<body>
+	<div id="injangdecreator" style="position: relative" >
+		<div id="injangopt1">
+			<h5 style="text-align: center;font-size: 20px;font-weight: bold;background-color:#ff8080;color:white;padding:2px 2px 2px 2px">인장 이미지 생성기</h5>
+			<div id="selectTypeInjang" style="padding:10px;left:10%px; display: relative; height: 30%">
+				<ul class="nav nav-tabs" id="injangtabs" >
+					<li><a href="#image_add_tab" id="imagetab" class="tabsgroup first_tab">
+					이미지추가</a></li>
+					<li><a href="#text_add_tab" id="texttab"  class="tabsgroup">
+					글자추가</a></li>
+					<li><a href="#blank_add_tab" id="blankaddtab" class="tabsgroup">
+					빈칸추가</a></li>
+					<li><a href="#code_tab" id="codetab" class="tabsgroup">
+					코드확인</a></li>
+				</ul>
+				<div id="tabs_contents" >
+					<div id="image_add_tab" class="tabscontents" >	
+						<form>					
+							<p style="font-size: 12px">(랜덤이미지 생성시 체크하고 이미지를 넣어주세요.)</p>
+							<input type="checkbox" name="mode_select"><label for="mode_select">랜덤이미지 생성</label><br>
+							<div style="margin-bottom: 1px">
+								<input type="hidden" name="injangtype" value="img">
+								<input type="text" name="injangcontext" placeholder="이미지 경로">
+								<button id="img_push" class="btn btn-info" >이미지 삽입</button>
+								<p style="font-size: 12px">(이미지를 클릭시 접을 파트에 등록가능합니다.첫번째 이미지는 선택하지 마세요.)</p>
+							</div>
+						</form>
+					</div>
+					<div id="text_add_tab" class="tabscontents">	
+						<form>
+							<input type="hidden" name="injangtype" value="text">	
+							<input type="text" name="injangcontext" placeholder="내용을 적어주세요">
+							<button id="content_push" class="btn btn-info">내용 삽입</button>
+							<input type="checkbox" name="t_center"><label for="t_center" style="font-size:12px">가운데 정렬</label>
+						</form>
+					</div>
+					<div id="blank_add_tab" class="tabscontents">	
+						<form>
+							<input type="hidden" name="injangtype" value="blank">	
+							<input type="text" name="injangcontext" placeholder="간격 px">
+							<button id="br_push" class="btn btn-info">빈칸 삽입</button>
+						</form>
+					</div>
+					<div id="code_tab" class="tabscontents">
+						<textarea class="injang_html_box" rows="5" ></textarea>
+					</div>
+				</div>
+				<div id="btn-group-1" style="text-align: center; position:relative;width:auto;margin-left:6px;margin-right:6px; ">
+					<div id="hide_btn" class="btn btn-warning" style="margin:10px 0px 10px 0px; max-width:100px" >보이기</div>
+					<div id="reset_input" class="btn btn-danger"style="margin:10px 0px 10px 10px; max-width:100px" >초기화</div> 
+					<div id="convert_html" class="btn btn-success"style="margin:10px 0px 10px 10px; max-width:100px" >코드생성</div> 
+					<div id="setHide" class="btn btn-success"style="margin:10px 0px 10px 10px; max-width:100px;" >이미지 접기</div> 
+				</div>
+				<div id="injang_add_list">
+					<ul class="iclist uk-sortable" data-uk-sortable></ul>
+				</div>
+			</div>
+		</div>
+		<div id="injang_html" style="left:500px;width:90%; padding: 6px; width:557px; height:557px;position:absolute;"><div id= "injang_code_preview_before" data-inven-toggle="injang_code_preview_after" style="width:100%"></div><div id="injang_code_preview_after" data-inven-id="injang_code_preview_after" style="width:100% ;display:none"></div></div>
+		
+	</div>
+
+	
+<script>
+	
+
+$(function() {
+
+
+	//폼값들을 가져온다.
+	$(".tabscontents form").submit(function(e){
+		e.preventDefault();
+		var type = $(this).find("[name=injangtype]").val();
+		var data = {type: type, con: $(this).find("[name=injangcontext]").val()};
+	
+		if (data.con == "") {
+			alert("내용을 입력해 주세요");
+		}
+		else{	
+			//리스트를 만든다.	
+			injangcreator.make_list(data);
+			$("[name=injangcontext]").val("");
+		}
+	})
+
+	var injangcreator = {
+
+		icList: [],
+		selectedImg: [],
+		randList: [],
+		injangmode: "normal",
+		checked: null,
+		impRandBox: null,
+		checked_center: null,
+
+		add_list: function(data) {
+			var icon = ""; 
+			this.icList.push(data);
+			switch(data.type) {
+				case 'img':
+					icon = "image";
+				break;
+				case 'text':
+					icon = "file-text-o";
+
+				break;
+				case 'blank':
+					icon = "square-o"
+				break; 
+
+			}
+
+			var li = this.icList.length-1;
+			var lis = $("<li>",{"data-id": li }).data("data", data)
+				.append("<div>", {"class": "list-item uk-panel uk-panel-box uk-panel-box-primary"})
+				.append("<button>",{"class": "uk-icon-trash" })
+				.append("<i>", {"class": "uk-icon-"+icon})
+				.append("<div>",{"class": "desc"}).text(data.con);
+
+				this.preview();
+
+		}
+
+		preview: function() {
+			//html 코드 생성 
+			$("#injang_code_preview_before").empty();
+			
+			if (injangmode == "random") {
+				randList = [];
+				for (var i in icList) {
+					randList.push("injang-box"+i);
+				}
+				impRandBox = randList.toString();
+			}
+	
+		
+			$.each(icList, function(i, val){
+				switch(val.type) {
+				case "img":
+					$("#injang_code_preview_before").append('<div data-inven-id="injang-box'+i+'"><img src="'+val.con+'" style="width:100%;"/></div>');
+				break;
+				case "text":
+					$("#injang_code_preview_before").append('<div data-inven-id="injang-box'+i+'">'+val.con+'</div>');
+				break;
+				case "blank":
+					$("#injang_code_preview_before").append('<div data-inven-id="injang-box'+i+'" style="height:'+val.con+'px;"><br></div>');
+				break;
+
+				}
+
+			})
+			$("#injang_code_preview_before").children().attr("data-inven-random", impRandBox);
+		}
+
+		refresh_list: function() {
+			this.icList = [];
+			$(".iclist li").each(function {
+				this.icList.push($(this).data("data"));
+			})
+		}
+
+	}
+
+
+	var icList=[];selectedImg = [];randList =[];injangmode = "normal";
+	var checked, impRandBox, checked_center;
+
+	
+	//탭 바꿀시 css 및 화면 바꿈
+	$("#injangtabs a").on("click", function() {
+		var val = $(this).attr("id");
+		var tabs_ = $('#injangtabs a');
+		//탭의 색상을 바꾼다
+		tabs_.removeClass().addClass("tabsgroup");
+			
+		$('#injangtabs [id="'+val+'"]').removeClass("tabsgroup").addClass("selected_tab");
+		//내용
+		if (val == "imagetab") {
+			$("#image_add_tab").show();
+			$("#text_add_tab").hide();
+			$("#blank_add_tab").hide();
+			$("#code_tab").hide();				
+		}
+		else if (val == "texttab") {
+			$("#image_add_tab").hide();
+			$("#text_add_tab").show();
+			$("#blank_add_tab").hide();
+			$("#code_tab").hide();									
+		}
+		else if (val == "blankaddtab") {
+			$("#image_add_tab").hide();
+			$("#text_add_tab").hide();
+			$("#blank_add_tab").show();
+			$("#code_tab").hide();							
+		}
+		else {
+			$("#image_add_tab").hide();
+			$("#text_add_tab").hide();
+			$("#blank_add_tab").hide();
+			$("#code_tab").show();		
+
+		}
+		
+	})
+
+
+	//이미지 삽입 모드 선택
+	$("input[name='mode_select']").click(function(){
+		$("[name='injangcontext']").val("")
+		if(checked == null || checked == undefined) {
+			injangmode = "random";
+			checked = 1;
+			alert("랜덤으로 이용할 이미지들을 삽입하시고 코드생성을 눌러주세요");
+		}
+		else if(checked == 1) {
+			injangmode = "normal";
+			checked = null;
+		}
+		
+	})
+
+	//폼값들을 가져온다.
+	$(".tabscontents form").submit(function(e){
+		e.preventDefault();
+		var type = $(this).find("[name=injangtype]").val();
+		var data = {type: type, con: $(this).find("[name=injangcontext]").val()};
+	
+		if (data.con == "") {
+			alert("내용을 입력해 주세요");
+		}
+		else{	
+			//리스트를 만든다.	
+			make_list(data);
+			$("[name=injangcontext]").val("");
+		}
+	})
+	//리스트를 지우고 새로고침한다.
+	$(".iclist").on("click",".uk-panel .uk-close", function() {
+		var pt = $(this).parents("li");
+		pt.remove();refresh_list();
+	})
+	//uikit sortable change event 시 리스트를 새로고침한다. 
+	$(".iclist").on("change.uk.sortable", function(){
+			refresh_list();\
+
+	})
+		
+
+	//이미지 선택, 이미지를 선택하면 선택한 이미지에 새로운 클라스를 부여하게 된다. 
+	$("#injang_code_preview_before").on("click","div", function() {
+		if(injangmode == "random") {
+			alert("이미지 선택은 일반 이미지 모드에서 가능합니다.");
+		}
+		else {
+		
+			if ($.inArray($(this).attr('data-inven-id'), selectedImg) == -1) {
+
+				selectedImg.push($(this).attr('data-inven-id'));
+				
+				$(this).addClass("selectedFop");	
+			}
+			else if ($.inArray($(this).attr('data-inven-id'),selectedImg) !== -1) {
+				selectedImg.splice( $.inArray($(this).attr('data-inven-id'), selectedImg), 1 );
+				
+				$(this).removeClass("selectedFop");
+									
+			}
+		}
+			
+	})
+
+	//이미지 접기, preview 와 afterview 로 이미지를 나눈다. 
+	$("#setHide").on("click", function(){
+		if (!$.isEmptyObject(selectedImg)) {
+			//프리뷰 박스의 html data-inven-id 의 값을 가져와야 한다. 
+			var sv = $("#injang_code_preview_before").children();
+			var pv = $("#injang_code_preview_after");
+			var tmp_ =[];
+			//각각의 아이디를 어레이에 담는다.
+			$.each(sv, function(i, val) {
+
+			 	var ele = $(this).attr("data-inven-id");
+			 	tmp_.push(ele);
+			});
+			
+			$.each(tmp_, function(i,v) {
+				//이미지들중 숨길 이미지들을 복사하여 숨길 파트에 넣는다. 
+				if($.inArray(v, selectedImg) != -1){
+					var ci = $("[data-inven-id='"+v+"']").clone();
+					
+					ci.css("opacity",1);
+					ci.removeClass("selectedFop");
+					ci.css("border", "none");
+					pv.append(ci);
+					$("#injang_code_preview_before > [data-inven-id='"+v+"']").remove();
+					$("[data-id='"+v+"']").remove();
+					
+				}
+			});	
+			//변수 초기화
+			selectedImg = [];	
+			refresh_list();
+		}
+		else {
+			alert("요소들을 선택후 실행하여 주세요");
+		}
+	})
+
+	//가운데 정렬시 
+	$("input[name='t_center']").click(function(){
+						
+		if(checked_center == null || checked_center == undefined) {
+			$("#injang_code_preview_before").css("text-align","center");
+			$("#injang_code_preview_after").css("text-align","center");
+			checked_center = 1;
+		}
+		else if(checked_center == 1) {
+			$("#injang_code_preview_before").css("text-align","");
+			$("#injang_code_preview_after").css("text-align","");
+			checked_center = null;
+		}
+		
+	})
+
+
+	
+	//이미지 접기 테스트 버튼
+	$("#hide_btn").click(function(){
+		$("#injang_code_preview_after").toggle();
+	})
+
+
+
+	//초기화 
+	$("#reset_input").click(function() {
+		
+		$("#injang_code_preview_after").empty();
+		$(".injang_html_box").val(function(){$(this).empty();});
+		$(".injang_html_box").hide();
+		icList = [];
+		$(".uk-sortable").empty();
+		add_preview();
+	    						
+	})
+	//html 코드 생성 
+	$("#convert_html").click(function(){
+		var injang_html = $("#injang_html").html();
+		
+		$(".injang_html_box").val(injang_html);
+		$(".injang_html_box").css("display","block");
+		$("#codetab").trigger("click");
+
+	})
+
+
+
+
+	//리스트 생성 
+	function make_list(data) {
+
+		//리스트에 데이터를 담는다.
+		icList.push(data);
+		
+		//타입에 따른 아이콘 이름을 생성한다.
+		var icon = "";
+		switch(data.type) {
+			case 'img':
+				icon = "image"; 
+			break;
+			case 'text':
+				icon = "file-text-o"; 
+			break;
+		}
+		//리스트를 출력한다.   
+			var lis= icList.length-1;
+			var li = $("<li>",{"data-id": "injang-box"+lis}).data("data", data).append("<div class='list-item uk-panel uk-panel-box uk-panel-box-primary'><button class='uk-close'></button><i class='uk-icon-"+icon+"'></i><div class='desc'>"+data.con+"</div>");
+
+			$(".uk-sortable").append(li);
+			add_preview();
+	
+	}
+	//리스트 새로고침 
+	function refresh_list() {
+		icList = [];
+		$(".iclist li").each(function(i, val) {
+			
+			icList.push($(this).data("data"));
+		})
+		add_preview();
+	}
+
+	//html 코드 생성 
+
+	function add_preview() {
+		$("#injang_code_preview_before").empty();
+		
+		if (injangmode == "random") {
+			randList = [];
+			for (var i in icList) {
+				randList.push("injang-box"+i);
+			}
+			impRandBox = randList.toString();
+		}
+		
+				
+		$.each(icList, function(i, val){
+				switch(val.type) {
+				case "img":
+					$("#injang_code_preview_before").append('<div data-inven-id="injang-box'+i+'"><img src="'+val.con+'" style="width:100%;"/></div>');
+				break;
+				case "text":
+					$("#injang_code_preview_before").append('<div data-inven-id="injang-box'+i+'">'+val.con+'</div>');
+				break;
+				case "blank":
+					$("#injang_code_preview_before").append('<div data-inven-id="injang-box'+i+'" style="height:'+val.con+'px;"><br></div>');
+				break;
+
+			}
+
+		})
+		$("#injang_code_preview_before").children().attr("data-inven-random", impRandBox);
+
+	}
+
+})	
+
+
+			
+
+
+</script>
+
+</body>
+</html>
