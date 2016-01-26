@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="euc-kr">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="lib/uikit/css/uikit.min.css"/>
@@ -15,49 +15,49 @@
 	<script src="lib/uikit/js/components/sortable.min.js"></script>
 	
 
-	<title>ÀÎÀå ÀÌ¹ÌÁö »ı¼º±â ¹öÀü 0.5</title>
+	<title>ì¸ì¥ ì´ë¯¸ì§€ ìƒì„±ê¸° ë²„ì „ 0.5</title>
 	</head>
 <body>
 	<div id="injangdecreator" style="position: relative" >
 		<div id="injangopt1">
-			<h5 style="text-align: center;font-size: 20px;font-weight: bold;background-color:#ff8080;color:white;padding:2px 2px 2px 2px">ÀÎÀå ÀÌ¹ÌÁö »ı¼º±â</h5>
+			<h5 style="text-align: center;font-size: 20px;font-weight: bold;background-color:#ff8080;color:white;padding:2px 2px 2px 2px">ì¸ì¥ ì´ë¯¸ì§€ ìƒì„±ê¸°</h5>
 			<div id="selectTypeInjang" style="padding:10px;left:10%px; display: relative; height: 30%">
 				<ul class="nav nav-tabs" id="injangtabs" >
 					<li><a href="#image_add_tab" id="imagetab" class="tabsgroup first_tab">
-					ÀÌ¹ÌÁöÃß°¡</a></li>
+					ì´ë¯¸ì§€ì¶”ê°€</a></li>
 					<li><a href="#text_add_tab" id="texttab"  class="tabsgroup">
-					±ÛÀÚÃß°¡</a></li>
+					ê¸€ìì¶”ê°€</a></li>
 					<li><a href="#blank_add_tab" id="blankaddtab" class="tabsgroup">
-					ºóÄ­Ãß°¡</a></li>
+					ë¹ˆì¹¸ì¶”ê°€</a></li>
 					<li><a href="#code_tab" id="codetab" class="tabsgroup">
-					ÄÚµåÈ®ÀÎ</a></li>
+					ì½”ë“œí™•ì¸</a></li>
 				</ul>
 				<div id="tabs_contents" >
 					<div id="image_add_tab" class="tabscontents" >	
 						<form>					
-							<p style="font-size: 12px">(·£´ıÀÌ¹ÌÁö »ı¼º½Ã Ã¼Å©ÇÏ°í ÀÌ¹ÌÁö¸¦ ³Ö¾îÁÖ¼¼¿ä.)</p>
-							<input type="checkbox" name="mode_select"><label for="mode_select">·£´ıÀÌ¹ÌÁö »ı¼º</label><br>
+							<p style="font-size: 12px">(ëœë¤ì´ë¯¸ì§€ ìƒì„±ì‹œ ì²´í¬í•˜ê³  ì´ë¯¸ì§€ë¥¼ ë„£ì–´ì£¼ì„¸ìš”.)</p>
+							<input type="checkbox" name="mode_select"><label for="mode_select">ëœë¤ì´ë¯¸ì§€ ìƒì„±</label><br>
 							<div style="margin-bottom: 1px">
 								<input type="hidden" name="injangtype" value="img">
-								<input type="text" name="injangcontext" placeholder="ÀÌ¹ÌÁö °æ·Î">
-								<button id="img_push" class="btn btn-info" >ÀÌ¹ÌÁö »ğÀÔ</button>
-								<p style="font-size: 12px">(ÀÌ¹ÌÁö¸¦ Å¬¸¯½Ã Á¢À» ÆÄÆ®¿¡ µî·Ï°¡´ÉÇÕ´Ï´Ù.Ã¹¹øÂ° ÀÌ¹ÌÁö´Â ¼±ÅÃÇÏÁö ¸¶¼¼¿ä.)</p>
+								<input type="text" name="injangcontext" placeholder="ì´ë¯¸ì§€ ê²½ë¡œ">
+								<button id="img_push" class="btn btn-info" >ì´ë¯¸ì§€ ì‚½ì…</button>
+								<p style="font-size: 12px">(ì´ë¯¸ì§€ë¥¼ í´ë¦­ì‹œ ì ‘ì„ íŒŒíŠ¸ì— ë“±ë¡ê°€ëŠ¥í•©ë‹ˆë‹¤.ì²«ë²ˆì§¸ ì´ë¯¸ì§€ëŠ” ì„ íƒí•˜ì§€ ë§ˆì„¸ìš”.)</p>
 							</div>
 						</form>
 					</div>
 					<div id="text_add_tab" class="tabscontents">	
 						<form>
 							<input type="hidden" name="injangtype" value="text">	
-							<input type="text" name="injangcontext" placeholder="³»¿ëÀ» Àû¾îÁÖ¼¼¿ä">
-							<button id="content_push" class="btn btn-info">³»¿ë »ğÀÔ</button>
-							<input type="checkbox" name="t_center"><label for="t_center" style="font-size:12px">°¡¿îµ¥ Á¤·Ä</label>
+							<input type="text" name="injangcontext" placeholder="ë‚´ìš©ì„ ì ì–´ì£¼ì„¸ìš”">
+							<button id="content_push" class="btn btn-info">ë‚´ìš© ì‚½ì…</button>
+							<input type="checkbox" name="t_center"><label for="t_center" style="font-size:12px">ê°€ìš´ë° ì •ë ¬</label>
 						</form>
 					</div>
 					<div id="blank_add_tab" class="tabscontents">	
 						<form>
 							<input type="hidden" name="injangtype" value="blank">	
-							<input type="text" name="injangcontext" placeholder="°£°İ px">
-							<button id="br_push" class="btn btn-info">ºóÄ­ »ğÀÔ</button>
+							<input type="text" name="injangcontext" placeholder="ê°„ê²© px">
+							<button id="br_push" class="btn btn-info">ë¹ˆì¹¸ ì‚½ì…</button>
 						</form>
 					</div>
 					<div id="code_tab" class="tabscontents">
@@ -65,10 +65,10 @@
 					</div>
 				</div>
 				<div id="btn-group-1" style="text-align: center; position:relative;width:auto;margin-left:6px;margin-right:6px; ">
-					<div id="hide_btn" class="btn btn-warning" style="margin:10px 0px 10px 0px; max-width:100px" >º¸ÀÌ±â</div>
-					<div id="reset_input" class="btn btn-danger"style="margin:10px 0px 10px 10px; max-width:100px" >ÃÊ±âÈ­</div> 
-					<div id="convert_html" class="btn btn-success"style="margin:10px 0px 10px 10px; max-width:100px" >ÄÚµå»ı¼º</div> 
-					<div id="setHide" class="btn btn-success"style="margin:10px 0px 10px 10px; max-width:100px;" >ÀÌ¹ÌÁö Á¢±â</div> 
+					<div id="hide_btn" class="btn btn-warning" style="margin:10px 0px 10px 0px; max-width:100px" >ë³´ì´ê¸°</div>
+					<div id="reset_input" class="btn btn-danger"style="margin:10px 0px 10px 10px; max-width:100px" >ì´ˆê¸°í™”</div> 
+					<div id="convert_html" class="btn btn-success"style="margin:10px 0px 10px 10px; max-width:100px" >ì½”ë“œìƒì„±</div> 
+					<div id="setHide" class="btn btn-success"style="margin:10px 0px 10px 10px; max-width:100px;" >ì´ë¯¸ì§€ ì ‘ê¸°</div> 
 				</div>
 				<div id="injang_add_list">
 					<ul class="iclist uk-sortable" data-uk-sortable></ul>
@@ -86,17 +86,17 @@
 $(function() {
 
 
-	//Æû°ªµéÀ» °¡Á®¿Â´Ù.
+	//í¼ê°’ë“¤ì„ ê°€ì ¸ì˜¨ë‹¤.
 	$(".tabscontents form").submit(function(e){
 		e.preventDefault();
 		var type = $(this).find("[name=injangtype]").val();
 		var data = {type: type, con: $(this).find("[name=injangcontext]").val()};
 	
 		if (data.con == "") {
-			alert("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+			alert("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”");
 		}
 		else{	
-			//¸®½ºÆ®¸¦ ¸¸µç´Ù.	
+			//ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“ ë‹¤.	
 			injangcreator.make_list(data);
 			$("[name=injangcontext]").val("");
 		}
@@ -141,7 +141,7 @@ $(function() {
 		}
 
 		preview: function() {
-			//html ÄÚµå »ı¼º 
+			//html ì½”ë“œ ìƒì„± 
 			$("#injang_code_preview_before").empty();
 			
 			if (injangmode == "random") {
@@ -185,15 +185,15 @@ $(function() {
 	var checked, impRandBox, checked_center;
 
 	
-	//ÅÇ ¹Ù²Ü½Ã css ¹× È­¸é ¹Ù²Ş
+	//íƒ­ ë°”ê¿€ì‹œ css ë° í™”ë©´ ë°”ê¿ˆ
 	$("#injangtabs a").on("click", function() {
 		var val = $(this).attr("id");
 		var tabs_ = $('#injangtabs a');
-		//ÅÇÀÇ »ö»óÀ» ¹Ù²Û´Ù
+		//íƒ­ì˜ ìƒ‰ìƒì„ ë°”ê¾¼ë‹¤
 		tabs_.removeClass().addClass("tabsgroup");
 			
 		$('#injangtabs [id="'+val+'"]').removeClass("tabsgroup").addClass("selected_tab");
-		//³»¿ë
+		//ë‚´ìš©
 		if (val == "imagetab") {
 			$("#image_add_tab").show();
 			$("#text_add_tab").hide();
@@ -223,13 +223,13 @@ $(function() {
 	})
 
 
-	//ÀÌ¹ÌÁö »ğÀÔ ¸ğµå ¼±ÅÃ
+	//ì´ë¯¸ì§€ ì‚½ì… ëª¨ë“œ ì„ íƒ
 	$("input[name='mode_select']").click(function(){
 		$("[name='injangcontext']").val("")
 		if(checked == null || checked == undefined) {
 			injangmode = "random";
 			checked = 1;
-			alert("·£´ıÀ¸·Î ÀÌ¿ëÇÒ ÀÌ¹ÌÁöµéÀ» »ğÀÔÇÏ½Ã°í ÄÚµå»ı¼ºÀ» ´­·¯ÁÖ¼¼¿ä");
+			alert("ëœë¤ìœ¼ë¡œ ì´ìš©í•  ì´ë¯¸ì§€ë“¤ì„ ì‚½ì…í•˜ì‹œê³  ì½”ë“œìƒì„±ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 		}
 		else if(checked == 1) {
 			injangmode = "normal";
@@ -238,37 +238,37 @@ $(function() {
 		
 	})
 
-	//Æû°ªµéÀ» °¡Á®¿Â´Ù.
+	//í¼ê°’ë“¤ì„ ê°€ì ¸ì˜¨ë‹¤.
 	$(".tabscontents form").submit(function(e){
 		e.preventDefault();
 		var type = $(this).find("[name=injangtype]").val();
 		var data = {type: type, con: $(this).find("[name=injangcontext]").val()};
 	
 		if (data.con == "") {
-			alert("³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+			alert("ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”");
 		}
 		else{	
-			//¸®½ºÆ®¸¦ ¸¸µç´Ù.	
+			//ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“ ë‹¤.	
 			make_list(data);
 			$("[name=injangcontext]").val("");
 		}
 	})
-	//¸®½ºÆ®¸¦ Áö¿ì°í »õ·Î°íÄ§ÇÑ´Ù.
+	//ë¦¬ìŠ¤íŠ¸ë¥¼ ì§€ìš°ê³  ìƒˆë¡œê³ ì¹¨í•œë‹¤.
 	$(".iclist").on("click",".uk-panel .uk-close", function() {
 		var pt = $(this).parents("li");
 		pt.remove();refresh_list();
 	})
-	//uikit sortable change event ½Ã ¸®½ºÆ®¸¦ »õ·Î°íÄ§ÇÑ´Ù. 
+	//uikit sortable change event ì‹œ ë¦¬ìŠ¤íŠ¸ë¥¼ ìƒˆë¡œê³ ì¹¨í•œë‹¤. 
 	$(".iclist").on("change.uk.sortable", function(){
 			refresh_list();\
 
 	})
 		
 
-	//ÀÌ¹ÌÁö ¼±ÅÃ, ÀÌ¹ÌÁö¸¦ ¼±ÅÃÇÏ¸é ¼±ÅÃÇÑ ÀÌ¹ÌÁö¿¡ »õ·Î¿î Å¬¶ó½º¸¦ ºÎ¿©ÇÏ°Ô µÈ´Ù. 
+	//ì´ë¯¸ì§€ ì„ íƒ, ì´ë¯¸ì§€ë¥¼ ì„ íƒí•˜ë©´ ì„ íƒí•œ ì´ë¯¸ì§€ì— ìƒˆë¡œìš´ í´ë¼ìŠ¤ë¥¼ ë¶€ì—¬í•˜ê²Œ ëœë‹¤. 
 	$("#injang_code_preview_before").on("click","div", function() {
 		if(injangmode == "random") {
-			alert("ÀÌ¹ÌÁö ¼±ÅÃÀº ÀÏ¹İ ÀÌ¹ÌÁö ¸ğµå¿¡¼­ °¡´ÉÇÕ´Ï´Ù.");
+			alert("ì´ë¯¸ì§€ ì„ íƒì€ ì¼ë°˜ ì´ë¯¸ì§€ ëª¨ë“œì—ì„œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 		}
 		else {
 		
@@ -288,14 +288,14 @@ $(function() {
 			
 	})
 
-	//ÀÌ¹ÌÁö Á¢±â, preview ¿Í afterview ·Î ÀÌ¹ÌÁö¸¦ ³ª´«´Ù. 
+	//ì´ë¯¸ì§€ ì ‘ê¸°, preview ì™€ afterview ë¡œ ì´ë¯¸ì§€ë¥¼ ë‚˜ëˆˆë‹¤. 
 	$("#setHide").on("click", function(){
 		if (!$.isEmptyObject(selectedImg)) {
-			//ÇÁ¸®ºä ¹Ú½ºÀÇ html data-inven-id ÀÇ °ªÀ» °¡Á®¿Í¾ß ÇÑ´Ù. 
+			//í”„ë¦¬ë·° ë°•ìŠ¤ì˜ html data-inven-id ì˜ ê°’ì„ ê°€ì ¸ì™€ì•¼ í•œë‹¤. 
 			var sv = $("#injang_code_preview_before").children();
 			var pv = $("#injang_code_preview_after");
 			var tmp_ =[];
-			//°¢°¢ÀÇ ¾ÆÀÌµğ¸¦ ¾î·¹ÀÌ¿¡ ´ã´Â´Ù.
+			//ê°ê°ì˜ ì•„ì´ë””ë¥¼ ì–´ë ˆì´ì— ë‹´ëŠ”ë‹¤.
 			$.each(sv, function(i, val) {
 
 			 	var ele = $(this).attr("data-inven-id");
@@ -303,7 +303,7 @@ $(function() {
 			});
 			
 			$.each(tmp_, function(i,v) {
-				//ÀÌ¹ÌÁöµéÁß ¼û±æ ÀÌ¹ÌÁöµéÀ» º¹»çÇÏ¿© ¼û±æ ÆÄÆ®¿¡ ³Ö´Â´Ù. 
+				//ì´ë¯¸ì§€ë“¤ì¤‘ ìˆ¨ê¸¸ ì´ë¯¸ì§€ë“¤ì„ ë³µì‚¬í•˜ì—¬ ìˆ¨ê¸¸ íŒŒíŠ¸ì— ë„£ëŠ”ë‹¤. 
 				if($.inArray(v, selectedImg) != -1){
 					var ci = $("[data-inven-id='"+v+"']").clone();
 					
@@ -316,16 +316,16 @@ $(function() {
 					
 				}
 			});	
-			//º¯¼ö ÃÊ±âÈ­
+			//ë³€ìˆ˜ ì´ˆê¸°í™”
 			selectedImg = [];	
 			refresh_list();
 		}
 		else {
-			alert("¿ä¼ÒµéÀ» ¼±ÅÃÈÄ ½ÇÇàÇÏ¿© ÁÖ¼¼¿ä");
+			alert("ìš”ì†Œë“¤ì„ ì„ íƒí›„ ì‹¤í–‰í•˜ì—¬ ì£¼ì„¸ìš”");
 		}
 	})
 
-	//°¡¿îµ¥ Á¤·Ä½Ã 
+	//ê°€ìš´ë° ì •ë ¬ì‹œ 
 	$("input[name='t_center']").click(function(){
 						
 		if(checked_center == null || checked_center == undefined) {
@@ -343,14 +343,14 @@ $(function() {
 
 
 	
-	//ÀÌ¹ÌÁö Á¢±â Å×½ºÆ® ¹öÆ°
+	//ì´ë¯¸ì§€ ì ‘ê¸° í…ŒìŠ¤íŠ¸ ë²„íŠ¼
 	$("#hide_btn").click(function(){
 		$("#injang_code_preview_after").toggle();
 	})
 
 
 
-	//ÃÊ±âÈ­ 
+	//ì´ˆê¸°í™” 
 	$("#reset_input").click(function() {
 		
 		$("#injang_code_preview_after").empty();
@@ -361,7 +361,7 @@ $(function() {
 		add_preview();
 	    						
 	})
-	//html ÄÚµå »ı¼º 
+	//html ì½”ë“œ ìƒì„± 
 	$("#convert_html").click(function(){
 		var injang_html = $("#injang_html").html();
 		
@@ -374,13 +374,13 @@ $(function() {
 
 
 
-	//¸®½ºÆ® »ı¼º 
+	//ë¦¬ìŠ¤íŠ¸ ìƒì„± 
 	function make_list(data) {
 
-		//¸®½ºÆ®¿¡ µ¥ÀÌÅÍ¸¦ ´ã´Â´Ù.
+		//ë¦¬ìŠ¤íŠ¸ì— ë°ì´í„°ë¥¼ ë‹´ëŠ”ë‹¤.
 		icList.push(data);
 		
-		//Å¸ÀÔ¿¡ µû¸¥ ¾ÆÀÌÄÜ ÀÌ¸§À» »ı¼ºÇÑ´Ù.
+		//íƒ€ì…ì— ë”°ë¥¸ ì•„ì´ì½˜ ì´ë¦„ì„ ìƒì„±í•œë‹¤.
 		var icon = "";
 		switch(data.type) {
 			case 'img':
@@ -390,7 +390,7 @@ $(function() {
 				icon = "file-text-o"; 
 			break;
 		}
-		//¸®½ºÆ®¸¦ Ãâ·ÂÇÑ´Ù.   
+		//ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•œë‹¤.   
 			var lis= icList.length-1;
 			var li = $("<li>",{"data-id": "injang-box"+lis}).data("data", data).append("<div class='list-item uk-panel uk-panel-box uk-panel-box-primary'><button class='uk-close'></button><i class='uk-icon-"+icon+"'></i><div class='desc'>"+data.con+"</div>");
 
@@ -398,7 +398,7 @@ $(function() {
 			add_preview();
 	
 	}
-	//¸®½ºÆ® »õ·Î°íÄ§ 
+	//ë¦¬ìŠ¤íŠ¸ ìƒˆë¡œê³ ì¹¨ 
 	function refresh_list() {
 		icList = [];
 		$(".iclist li").each(function(i, val) {
@@ -408,7 +408,7 @@ $(function() {
 		add_preview();
 	}
 
-	//html ÄÚµå »ı¼º 
+	//html ì½”ë“œ ìƒì„± 
 
 	function add_preview() {
 		$("#injang_code_preview_before").empty();

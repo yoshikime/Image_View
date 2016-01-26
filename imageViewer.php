@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="euc-kr">
+	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<title>ภฬนฬม๖ บไพ๎</title>
+	<title>์ด๋ฏธ์ง€ ๋ณด๊ธฐ</title>
 
 	<style>
 		body {
@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div id="container">
-		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="ภฬนฬม๖ บไพ๎"  id="imagename" class="zooom" style="position:relative"/>
+		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="ร€รยนรรรถ ยบรคยพรฎ"  id="imagename" class="zooom" style="position:relative"/>
 	</div>
 <script src="imgPop.js"></script>
 </body>
