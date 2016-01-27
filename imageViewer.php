@@ -20,7 +20,7 @@
 	</style>
 </head>
 <body>
-	<h2>이것은 종결자입니다.</h2>
+	<h2>이것은 종결자입니다.ㅋㅋㅋ</h2>
 
 	<div id="container">
 		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
