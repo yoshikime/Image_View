@@ -1,7 +1,6 @@
 
 $(function(){
-	initializer();
-	//scrollZoom();
+	initializer();	
 	scrollZoom();
 
 	$('img').draggable(
@@ -15,8 +14,7 @@ $(function(){
 	        wrapperOffset.left,
 	        wrapperOffset.top]
 	   	});
-
-	//$("img").draggable();
+	
 	getCurLoc();
 	
 })
@@ -122,13 +120,7 @@ function scrollZoom() {
 							"of": $("#container"),
 							"collision": "fit"
 							});	
-
-						}
-
-
-
-						//줌 아웃시 이미지의 위피를 항상 left top 으로 고정 		
-								
+						}								
 										
 				}
 
