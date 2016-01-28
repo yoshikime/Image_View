@@ -20,9 +20,7 @@
 	</style>
 </head>
 <body>
-	<h2>IMAGE SCROLL ZOOM</h2>
- 
-
+	<h2>IMAGE SCROLL ZOOM 내가 망쳐놓겠음.</h2>
 
 
 
