@@ -21,7 +21,12 @@
 </head>
 <body>
 	<h2>IMAGE SCROLL ZOOM</h2>
+ 
 
+
+
+
+ 
 	<div id="container">
 		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
 	</div>
