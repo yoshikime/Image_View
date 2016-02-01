@@ -16,7 +16,12 @@ $(function(){
 	   	});
 	
 	getCurLoc();
-	
+
+	$('img').dblclick(function(){
+		imgcomp(); 
+	}); 	
+
+
 })
 
 var img;
@@ -31,7 +36,8 @@ var mTerritoryX = 0;
 var mTerritoryY = 0;
 var conWidth = container.css("width", bgWidth);
 var conHeight = container.css("height", bgHeight);
-//드래그시 이미지가 창밖으로 나가지 않게 하기위해 draggable 오브젝트의 containment 값을 드래그시마다 지정해준다.
+var mode;
+//드래그시 이미지가 창밖으로 나가지 않게 하기위해 draggable 오브젝트의 container 값을 드래그시마다 지정해준다.
 function getSize(){
 	if (bgWidth <= container.width()){
 		bgConwrapperX = 0;
@@ -106,7 +112,7 @@ function scrollZoom() {
 			var mouseY = ratioH-tPosition*0.1; 			
 
 			if (delta > 0) {			
-				if (bgWidth > 800) {					
+				if (bgWidth >850) {					
 						img.css("width",(bgWidth = bgWidth - ratioW)+"px");
 						img.css("height",(bgHeight = bgHeight- ratioH)+"px");
 
@@ -138,5 +144,11 @@ function scrollZoom() {
 		
 }
 
-function gcd(a, b) { return (!b) ? a : gcd(b,a%b);}
+function imgcomp() { 
+	mode = true; 
+
+
+}
+
+
 

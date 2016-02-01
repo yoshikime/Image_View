@@ -15,7 +15,6 @@
 			height: 600px; 
 			overflow: hidden;
 			border:solid 1px #353535;
-
 		}
 	
 	</style>
@@ -23,7 +22,9 @@
 <body>
 	<h2>IMAGE SCROLL ZOOM</h2> 
 	<div id="container">
-		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
+		<a href="#" title="test">
+			<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
+		</a>
 	</div>
 <script src="imgPop.js"></script>
 </body>
