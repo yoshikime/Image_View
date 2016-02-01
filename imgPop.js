@@ -18,8 +18,11 @@ $(function(){
 	getCurLoc();
 
 	$('img').dblclick(function(){
-		imgcomp(); 
+		imgcomp('layer1'); 
 	}); 	
+	$('img').on('mouseenter', function(){
+		layerShow('#layer1');
+	})
 
 
 })
@@ -36,7 +39,7 @@ var mTerritoryX = 0;
 var mTerritoryY = 0;
 var conWidth = container.css("width", bgWidth);
 var conHeight = container.css("height", bgHeight);
-var mode;
+var mode, html;
 //드래그시 이미지가 창밖으로 나가지 않게 하기위해 draggable 오브젝트의 container 값을 드래그시마다 지정해준다.
 function getSize(){
 	if (bgWidth <= container.width()){
@@ -144,10 +147,16 @@ function scrollZoom() {
 		
 }
 
-function imgcomp() { 
+function imgcomp(title) { 
 	mode = true; 
+	html = "<div id='"+title+"'style='display:none;'>test</div>";
+	$("body").append(html); 
+}
 
-
+function layerShow(title) {
+	if (mode == true) {
+		$(title).show(); 
+	}
 }
 
 

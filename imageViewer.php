@@ -16,6 +16,12 @@
 			overflow: hidden;
 			border:solid 1px #353535;
 		}
+		#layer1 {
+			width: 150px;
+			height:150px;
+			border:solid 1px #343434;
+			z-index: 999;
+		}
 	
 	</style>
 </head>
