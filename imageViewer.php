@@ -14,17 +14,14 @@
 			width: 800px;
 			height: 600px; 
 			overflow: hidden;
+			border:solid 1px #353535;
 
 		}
 	
 	</style>
 </head>
 <body>
-	<h2>IMAGE SCROLL ZOOM 내가 망쳐놓겠음.허ㅗ허ㅗ허ㅗ</h2>
-
-
-
- 
+	<h2>IMAGE SCROLL ZOOM</h2> 
 	<div id="container">
 		<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
 	</div>
