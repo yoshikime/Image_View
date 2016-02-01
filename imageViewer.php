@@ -21,6 +21,7 @@
 			height:150px;
 			border:solid 1px #343434;
 			z-index: 999;
+			position:absolute;
 		}
 	
 	</style>

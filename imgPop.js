@@ -22,6 +22,13 @@ $(function(){
 	}); 	
 	$('img').on('mouseenter', function(){
 		layerShow('#layer1');
+		$(this).on('mousemove', function() {			
+			layerInit('#layer1');	
+		})
+		
+	})
+	$('img').on('mouseleave', function() {
+		layerHide('#layer1');
 	})
 
 
@@ -157,6 +164,19 @@ function layerShow(title) {
 	if (mode == true) {
 		$(title).show(); 
 	}
+}
+
+function layerHide(title){
+	if (mode == true) {
+		$(title).hide();
+	}
+}
+
+function layerInit(title) {	
+		$(title).css({
+			"left": currentMouseX,
+			"top": currentMouseY
+		});	
 }
 
 
