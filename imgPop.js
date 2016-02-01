@@ -40,7 +40,7 @@ var mTerritoryY = 0;
 var conWidth = container.css("width", bgWidth);
 var conHeight = container.css("height", bgHeight);
 var mode, html;
-//µå·¡±×½Ã ÀÌ¹ÌÁö°¡ Ã¢¹ÛÀ¸·Î ³ª°¡Áö ¾Ê°Ô ÇÏ±âÀ§ÇØ draggable ¿ÀºêÁ§Æ®ÀÇ container °ªÀ» µå·¡±×½Ã¸¶´Ù ÁöÁ¤ÇØÁØ´Ù.
+//ë“œë˜ê·¸ì‹œ ì´ë¯¸ì§€ê°€ ì°½ë°–ìœ¼ë¡œ ë‚˜ê°€ì§€ ì•Šê²Œ í•˜ê¸°ìœ„í•´ draggable ì˜¤ë¸Œì íŠ¸ì˜ container ê°’ì„ ë“œë˜ê·¸ì‹œë§ˆë‹¤ ì§€ì •í•´ì¤€ë‹¤.
 function getSize(){
 	if (bgWidth <= container.width()){
 		bgConwrapperX = 0;
@@ -59,7 +59,7 @@ function getSize(){
 	img.data('uiDraggable').containment[0] = wrapperOffset.left - bgConwrapperX;
 	img.data('uiDraggable').containment[1] = wrapperOffset.top - bgConwrapperY;
 }
-//ÀÌ¹ÌÁö »çÀÌÁî¸¦ º¯¼ö¿¡ ÁöÁ¤ÇÏ°í µå·¡±×¸¦ È°¼ºÈ­ ½ÃÅ²´Ù. 
+//ì´ë¯¸ì§€ ì‚¬ì´ì¦ˆë¥¼ ë³€ìˆ˜ì— ì§€ì •í•˜ê³  ë“œë˜ê·¸ë¥¼ í™œì„±í™” ì‹œí‚¨ë‹¤. 
 function initializer() {
 	img = $("img");
 	bgWidth = img.width(); 
@@ -70,7 +70,7 @@ function initializer() {
 		$("img").css("cursor", "move");
 	}	
 }
-//¸¶¿ì½ºÁÂÇ¥ÀÇ À§Ä¡¸¦ ±¸ÇÑ´Ù. 
+//ë§ˆìš°ìŠ¤ì¢Œí‘œì˜ ìœ„ì¹˜ë¥¼ êµ¬í•œë‹¤. 
 function getCurLoc() {
 	
 		$("img").on("mousemove", function(e) {
@@ -79,10 +79,10 @@ function getCurLoc() {
 			curL = parseInt(img.css("left").replace('px',''));
 			curT = parseInt(img.css("top").replace('px', ''));		
 
-			//ÀÌ¹ÌÁöÀ§Ä¡¸¦ ±âÁØÀ¸·Î ¸¶¿ì½º ÁÂÇ¥¸¦ ¼³Á¤ 
+			//ì´ë¯¸ì§€ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë§ˆìš°ìŠ¤ ì¢Œí‘œë¥¼ ì„¤ì • 
 			lPosition = Math.floor(bgWidth+curL-currentMouseX); 
 			tPosition = Math.floor(bgHeight+curT-currentMouseY); 
-			//ÀÌ¹ÌÁöÀ§ ¸¶¿ì½º¿µ¿ª¿¡ µû¸¥ °è»ê 
+			//ì´ë¯¸ì§€ìœ„ ë§ˆìš°ìŠ¤ì˜ì—­ì— ë”°ë¥¸ ê³„ì‚° 
 			if(currentMouseX < container.width()*0.5) {
 				mTerritoryX = -currentMouseX*0.1-10;				
 			}
@@ -101,7 +101,7 @@ function getCurLoc() {
 }
 
 
-//½ºÅ©·Ñ½Ã ÁÜ ÀÎ ¾Æ¿ô 
+//ìŠ¤í¬ë¡¤ì‹œ ì¤Œ ì¸ ì•„ì›ƒ 
 function scrollZoom() {
 		
 		$("img").on('wheel', function(e) {
