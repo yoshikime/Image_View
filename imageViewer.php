@@ -7,30 +7,33 @@
 	<title>Image Scroll Zoom</title>
 
 	<style>
-		body {
-			margin:0 0 0 0;
-		}
 		#container {
-			width: 800px;
-			height: 600px; 
-			overflow: hidden;
 			border:solid 1px #353535;
+			position: relative;
+		}
+		#container img{
+			position:absolute;
+			left:0;
+			top:0;
 		}
 		#layer1 {
 			width: 150px;
 			height:150px;
-			border:solid 1px #343434;
+			/*border:solid 1px #343434;*/
+			border-radius: 50%;
 			z-index: 999;
 			position:absolute;
+
 		}
+
 	
 	</style>
 </head>
 <body>
-	<h2>IMAGE SCROLL ZOOM</h2> 
+	<h2>IMAGE ZOOMMER</h2> 
 	<div id="container">
-		<a href="#" title="test">
-			<img src ="http://static.inven.co.kr/image_2011/tos/dataninfo/map/map_4.jpg" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
+		<a href="#" >
+			<img src ="http://cdn.shopify.com/s/files/1/0216/0202/products/prs-c24-wl-bo-0851-main_1024x1024.jpg?v=1417629147" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
 		</a>
 	</div>
 <script src="imgPop.js"></script>
