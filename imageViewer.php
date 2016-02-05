@@ -36,7 +36,7 @@
 			<img src ="http://cdn.shopify.com/s/files/1/0216/0202/products/prs-c24-wl-bo-0851-main_1024x1024.jpg?v=1417629147" alt="이미지"  id="imagename" class="zooom" style="position:relative"/>
 		</a>
 	</div>
-<script src="imgPop.js"></script>
+<script src="imgglass.js"></script>
 </body>
 
 </html>

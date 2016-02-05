@@ -23,6 +23,7 @@ var curL = null; curT = null;
 var wrapperOffset = $("#container").offset();
 var bgConwrapperX, bgConwrapperY;
 var container = $("#container");
+var zlPosition, ztPosition;
 
 
 var mode = 1, html;
